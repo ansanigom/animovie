@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "json"
+require "open-uri"
+
+url = "https://kitsu.io/api/edge"
+animes = URI.open(url).read
+anime = JSON.parse(animes)
+
+puts "#{anime["title"]}"
